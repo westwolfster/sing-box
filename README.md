@@ -25,3 +25,27 @@ sub-store是一个很好用的工具 但 sub-store你需要在服务器搭建，
 转换v2ray格式的节点为sing-box的项目： https://github.com/wynemo/v2ray-to-sing-box/ 感谢 gui-for-singbox 插件 原作者 以及sub-store作者
 
 全过程都在浏览器里，直接生成 sing-box 配置了
+
+sub-store 部署
+docker run -it -d \
+--restart=always \
+-e SUB_STORE_FRONTEND_BACKEND_PATH=/a7b9c2d4e6f8g1h3j5k9 \
+--net host \
+-p 3001:3001 \
+-v /opt/sub-store:/opt/app/data \
+--name sub-store \
+xream/sub-store
+
+搭建好后，浏览器访问 http://192.168.5.1:3001?api=http://192.168.5.1:3001/a7b9c2d4e6f8g1h3j5k9
+
+--SubStore config template
+https://ghfast.top/https://raw.githubusercontent.com/westwolfster/momo/refs/heads/main/momo_substore_config_template.json
+
+--substore file scripts
+https://ghfast.top/https://raw.githubusercontent.com/xream/scripts/main/surge/modules/sub-store-scripts/sing-box/template.js#type=单条订阅&name=牛逼_Airport&outbound=🕳ℹ️🐸 手动选择|♻️ 自动选择🏷ℹ️^(?!.*(?:官网|剩余|流量|套餐|免费|订阅|到期时间|全球直连|GB|Expire Date|Traffic|ExpireDate)).*🕳ℹ️🇭🇰 香港自动🏷ℹ️^(?!.*(?:us)).*(🇭🇰|HK|hk|香港|港|HongKong)🕳ℹ️🇯🇵 日本自动🏷ℹ️^(?!.*(?:us)).*(🇯🇵|JP|jp|日本|日|Japan)🕳ℹ️🇸🇬 狮城自动🏷ℹ️^(?!.*(?:us)).*(新加坡|坡|狮城|SG|Singapore)🕳ℹ️🇺🇲 美国自动🏷ℹ️^(?!.*(?:AUS|RUS)).*(🇺🇸|US|us|美国|美|United States)
+
+杂乱的节点排序无章的，可以试试如下脚本，让你的节点赏心悦目
+
+https://ghfast.top/https://raw.githubusercontent.com/Keywos/rule/main/rename.js
+
+^(?!.*(?:官网|剩余|流量|套餐|免费|订阅|到期时间|全球直连|GB|Expire Date|Traffic|ExpireDate))
