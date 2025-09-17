@@ -1,0 +1,117 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "inbounds": [
+    {
+      "type": "http",
+      "tag": "http-in",
+      "listen": "0.0.0.0",
+      "port": 7890,
+      "sniff": true,
+      "sniff_override_destination": true
+    },
+    {
+      "type": "socks",
+      "tag": "socks-in",
+      "listen": "0.0.0.0",
+      "port": 1080,
+      "udp": true
+    },
+    {
+      "type": "api",
+      "tag": "api-in",
+      "listen": "127.0.0.1",
+      "port": 9999,
+      "control": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "freedom",
+      "tag": "direct"
+    },
+    {
+      "type": "blackhole",
+      "tag": "blocked"
+    },
+    {
+      "type": "script",
+      "tag": "vpn-out",
+      "script": {
+        "type": "http",
+        "url": "https://subconverters.com/sub?target=singbox&url=https%3A%2F%2Fzhuzhuzhu.whtjdasha.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3Ddaec1bbd5e3e5761c4e00db114eade58&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false",
+        "interval": 3600,
+        "tls": true
+      },
+      "load_balance": {
+        "strategy": "round-robin"
+      }
+    }
+  ],
+  "dns": {
+    "tag": "dns-in",
+    "servers": [
+      {
+        "address": "202.101.224.69",
+        "port": 53,
+        "protocol": "udp",
+        "domains": ["geosite:cn", "geosite:cn-private"]
+      },
+      {
+        "address": "1.1.1.1",
+        "port": 53,
+        "protocol": "udp"
+      },
+      {
+        "address": "8.8.8.8",
+        "port": 53,
+        "protocol": "udp"
+      }
+    ],
+    "enhanced-mode": "fake-ip",
+    "fake-ip-range": "198.18.0.1/16",
+    "fallback": [
+      "https://cloudflare-dns.com/dns-query"
+    ]
+  },
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "domain": ["geosite:cn", "geosite:cn-private"],
+        "outbound": "direct"
+      },
+      {
+        "type": "field",
+        "ip": ["geoip:cn"],
+        "outbound": "direct"
+      },
+      {
+        "type": "field",
+        "outbound": "vpn-out"
+      }
+    ]
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 4,
+        "connIdle": 300,
+        "uplinkOnly": 2,
+        "downlinkOnly": 5,
+        "statsUserUplink": true,
+        "statsUserDownlink": true
+      }
+    }
+  },
+  "api": {
+    "enabled": true,
+    "listen": "0.0.0.0:9090",
+    "auth_token": "singbox_control_panel_token"
+  },
+  "experimental": {
+    "script_cache": true
+  }
+}
