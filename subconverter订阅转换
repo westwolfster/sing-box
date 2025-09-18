@@ -1,15 +1,3 @@
-[common]
-proxy = https://zhuzhuzhu.whtjdasha.com/api/v1/client/subscribe?token=daec1bbd5e3e5761c4e00db114eade58
-target = singbox
-scv = 1
-udp = 1
-sort = true
-insert = false
-emoji = true
-list = false
-new_name = false
-
-
 
 http://192.168.110.99:25500/sub?target=singbox&url=https://zhuzhuzhu.whtjdasha.com/api/v1/client/subscribe?token=daec1bbd5e3e5761c4e00db114eade58
 
@@ -69,5 +57,6 @@ https://www.json.cn/
 mkdir /etc/sing-box
 
 cd /etc/sing-box
+
 
 ./sing-box run -c config.json
