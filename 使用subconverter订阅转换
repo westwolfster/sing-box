@@ -1,5 +1,5 @@
 subconverter订阅转换
-1，Docker 部署订阅前端转换：docker run -d --name=SubWeb -p 8091:80 -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai --restart always careywong/subweb:latest
+1、Docker 部署订阅前端转换：docker run -d --name=SubWeb -p 8091:80 -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai --restart always careywong/subweb:latest
 这条 Docker 命令中的 -p 8091:80 参数表示：
 8091 是宿主机（你本地或服务器）暴露给外部访问的端口。
 80 是容器内部运行的服务端口（也就是 SubWeb 应用监听的端口）。
@@ -7,9 +7,18 @@ subconverter订阅转换
 SubWeb 在容器内部监听的是端口 80。
 外部访问时，需要通过宿主机的 8091 端口，例如访问 http://localhost:8091 或 http://你的服务器IP:8091。
 这个端口映射机制是 Docker 的常规做法，用于将容器内部服务暴露给外部用户访问。
-2，Docker 部署订阅后端转换：docker run -d --name Sub2Converter --restart=always -p 25500:25500 ghcr.io/metacubex/subconverter:latest
+2、Docker 部署订阅后端转换：docker run -d --name Sub2Converter --restart=always -p 25500:25500 ghcr.io/metacubex/subconverter:latest
 
-订阅链接转码： python3 -c "import urllib.parse; print(urllib.parse.quote('订阅链接'))"
+3、终端命令行用法（不使用前端）
+语法：http://192.168.110.99:25500/sub?target=singbox&url=URL转码后的订阅链接地址&file=规则模板json地址
+订阅链接URL转码： python3 -c "import urllib.parse; print(urllib.parse.quote('订阅链接'))"
+示例1：显示转换后的sing-box配置文件
+curl "http://127.0.0.1:25500/sub?target=singbox&url=https%3A//zhuzhuzhu.whtjdasha.com/api/v1/client/subscribe%3Ftoken%3Ddaec1bbd5e3e5761c4e00db114eade5"
+显示牛逼机场通用订阅链接转换为sing-box 配置文件
+示例2：转换订阅中应用配置模板
+curl "http://192.168.110.99:25500/sub?target=singbox&url=https%3A//zhuzhuzhu.whtjdasha.com/api/v1/client/subscribe%3Ftoken%3Ddaec1bbd5e3e5761c4e00db114eade58&file=https://ghfast.top/https://raw.githubusercontent.com/westwolfster/momo/refs/heads/main/momo_substore_config_template.json"
+示例3：将输出结果直接写配置文件
+curl -o /home/luobo/client.json "http://192.168.110.99:25500/sub?target=singbox&url=https%3A//zhuzhuzhu.whtjdasha.com/api/v1/client/subscribe%3Ftoken%3Ddaec1bbd5e3e5761c4e00db114eade58&file=https://ghfast.top/https://raw.githubusercontent.com/westwolfster/momo/refs/heads/main/momo_substore_config_template.json"
 
 5，Up的Clash项目地址：https://github.com/liandu2024/clash 
 6，Up的Nikki项目地址： https://github.com/liandu2024/nikki
@@ -65,4 +74,5 @@ cd /etc/sing-box
 
 
 ./sing-box run -c config.json
+
 
