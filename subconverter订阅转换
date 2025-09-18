@@ -1,11 +1,16 @@
+subconverter订阅转换
+1，Docker 部署订阅前端转换：docker run -d --name=SubWeb -p 8091:80 -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai --restart always careywong/subweb:latest
+这条 Docker 命令中的 -p 8091:80 参数表示：
+8091 是宿主机（你本地或服务器）暴露给外部访问的端口。
+80 是容器内部运行的服务端口（也就是 SubWeb 应用监听的端口）。
+📌 换句话说，当容器启动后：
+SubWeb 在容器内部监听的是端口 80。
+外部访问时，需要通过宿主机的 8091 端口，例如访问 http://localhost:8091 或 http://你的服务器IP:8091。
+这个端口映射机制是 Docker 的常规做法，用于将容器内部服务暴露给外部用户访问。
+2，Docker 部署订阅后端转换：docker run -d --name Sub2Converter --restart=always -p 25500:25500 ghcr.io/metacubex/subconverter:latest
 
-http://192.168.110.99:25500/sub?target=singbox&url=https://zhuzhuzhu.whtjdasha.com/api/v1/client/subscribe?token=daec1bbd5e3e5761c4e00db114eade58
+订阅链接转码： python3 -c "import urllib.parse; print(urllib.parse.quote('订阅链接'))"
 
-
-1，AI 接口： https://ai.opendoor.cn
-2，机场订阅前端转换：https://acl4ssr-sub.github.io/
-3，Docker 部署订阅前端转换：docker run -d --name=SubWeb -p 8091:80 -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai --restart always careywong/subweb:latest
-4，Docker 部署订阅后端转换：docker run -d --name Sub2Converter --restart=always -p 25500:25500 ghcr.io/metacubex/subconverter:latest
 5，Up的Clash项目地址：https://github.com/liandu2024/clash 
 6，Up的Nikki项目地址： https://github.com/liandu2024/nikki
 7，零基础刷 OpenWRT 23.05：   • 0基础刷 OpenWRT 23.05 最新版，分区+磁盘扩容，双 pppoe、dhc...
@@ -19,7 +24,7 @@ curl -o /home/luobo/client.json "http://127.0.0.1:25500/sub?target=singbox&url=h
 
 
 
-python3 -c "import urllib.parse; print(urllib.parse.quote('https://zhuzhuzhu.whtjdasha.com/api/v1/client/subscribe?token=daec1bbd5e3e5761c4e00db114eade58'))"
+
 https%3A//zhuzhuzhu.whtjdasha.com/api/v1/client/subscribe%3Ftoken%3Ddaec1bbd5e3e5761c4e00db114eade58
 
 
@@ -60,3 +65,4 @@ cd /etc/sing-box
 
 
 ./sing-box run -c config.json
+
