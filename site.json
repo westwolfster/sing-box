@@ -1,0 +1,286 @@
+{
+    "outbounds": [
+        {
+            "type": "shadowsocks",
+            "tag": "🇭🇰 香港01-IPv6",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 29527,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇭🇰 香港02-IPv6",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40010,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇭🇰 香港03-IPv6",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 19527,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇭🇰 香港04-IPv6",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40023,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇭🇰 香港05-流媒体解锁",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 39301,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇭🇰 香港06-流媒体解锁",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40011,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇸🇬 新加坡01-流媒体解锁|AI",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 39204,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇸🇬 新加坡02-流媒体解锁|AI",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40013,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇸🇬 新加坡03",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 39505,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇸🇬 新加坡04",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 44014,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇰🇷 韩国-家宽03-流媒体解锁|AI",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 39206,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "NjVhMWE2YmVmNzg4MTcwMA==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇰🇷 韩国-家宽04-流媒体解锁|AI",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 20116,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "NjVhMWE2YmVmNzg4MTcwMA==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇨🇳 台湾01-流媒体解锁|AI",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 32207,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "NjVhMWE2YmVmNzg4MTcwMA==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇨🇳 台湾02-流媒体解锁|AI",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40017,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "NjVhMWE2YmVmNzg4MTcwMA==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇯🇵 日本01",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 19529,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇯🇵 日本02",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40019,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇯🇵 日本03",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 49207,
+            "method": "2022-blake3-aes-256-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNjE5OWQyNDYxZjM1MjA0OTg=:ZDk3Mzc5OWUtODhhMi00NWQyLWFhMmQtMDkwOTdjOTY=",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇯🇵 日本04",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40020,
+            "method": "2022-blake3-aes-256-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNjE5OWQyNDYxZjM1MjA0OTg=:ZDk3Mzc5OWUtODhhMi00NWQyLWFhMmQtMDkwOTdjOTY=",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇨🇦 加拿大01",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 39209,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇨🇦 加拿大02",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40021,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇺🇸 美国凤凰城01",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 12980,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇺🇸 美国凤凰城02",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 12981,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇺🇸 美国拉斯维加斯01",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 12983,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇺🇸 美国拉斯维加斯02",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 12984,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇺🇸 美国纽约01",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 39203,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇺🇸 美国纽约02",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 40022,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇩🇪 德国01",
+            "server": "hzhz1.sssyun.xyz",
+            "server_port": 39987,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "🇩🇪 德国02",
+            "server": "hzhz2.sssyun.xyz",
+            "server_port": 39981,
+            "method": "2022-blake3-aes-128-gcm",
+            "password": "MDhhMTdjZDI0MjI2ZWRlNg==:ZDk3Mzc5OWUtODhhMi00NQ==",
+            "tcp_fast_open": false
+        }
+    ]
+}
+
+
+"🇭🇰 香港01-IPv6",
+"🇭🇰 香港02-IPv6",
+"🇭🇰 香港03-IPv6",
+"🇭🇰 香港04-IPv6",
+"🇭🇰 香港05-流媒体解锁",
+"🇭🇰 香港06-流媒体解锁",
+"🇸🇬 新加坡01-流媒体解锁|AI",
+"🇸🇬 新加坡02-流媒体解锁|AI",
+"🇸🇬 新加坡03",
+"🇸🇬 新加坡04",
+"🇰🇷 韩国-家宽03-流媒体解锁|AI",
+"🇰🇷 韩国-家宽04-流媒体解锁|AI",
+"🇨🇳 台湾01-流媒体解锁|AI",
+"🇨🇳 台湾02-流媒体解锁|AI",
+"🇯🇵 日本01",
+"🇯🇵 日本02",
+"🇯🇵 日本03",
+"🇯🇵 日本04",
+"🇨🇦 加拿大01",
+"🇨🇦 加拿大02",
+"🇺🇸 美国凤凰城01",
+"🇺🇸 美国凤凰城02",
+"🇺🇸 美国拉斯维加斯01",
+"🇺🇸 美国拉斯维加斯02",
+"🇺🇸 美国纽约01",
+"🇺🇸 美国纽约02",
+"🇩🇪 德国01",
+"🇩🇪 德国02"
