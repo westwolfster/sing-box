@@ -49,3 +49,17 @@ https://ghfast.top/https://raw.githubusercontent.com/xream/scripts/main/surge/mo
 https://ghfast.top/https://raw.githubusercontent.com/Keywos/rule/main/rename.js
 
 ^(?!.*(?:官网|剩余|流量|套餐|免费|订阅|到期时间|全球直连|GB|Expire Date|Traffic|ExpireDate))
+
+今天来讲如何直接在网页里生成 sing-box 配置，主要是用到gui-for-cores 这个项目的网站
+所有转换、生成都是在本地或浏览器进行的，不会上传到服务器 你可以放心使用 也可以检查代码
+同时也很简单，比起有些项目，不要了解太多概念，也不需要知道配置文件的具体细节，这是这个方法的意义
+
+1. 打开 gui-for-singbox网页 https://gui-for-cores.github.io/ 先打开设置 改语言问中文 点击右上角的插件按钮，添加插件转换订阅
+2. 如果你没有机场，只有单个节点，到第3步; 远程订阅 - 填入机场订阅地址 如果成功出现节点信息，就可以继续到第4步，如果失败(跨域问题，订阅连接为http问题)，可以到第3步
+3. 打开 https://v2ray-to-sing-box.pages.dev/ 粘贴订阅内容（不是订阅链接）或者节点信息，点击转换，复制转换结果，放到gui-for-singbox网页 - 手动订阅里
+4. 有了订阅信息，gui-for-singbox网页生成配置，复制到你的sing-box里
+
+转换v2ray格式的节点为sing-box的项目： https://github.com/wynemo/v2ray-to-si... 感谢 gui-for-singbox 插件 原作者 以及sub-store作者
+
+全过程都在浏览器里，直接生成 sing-box 配置了
+
