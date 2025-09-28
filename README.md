@@ -63,3 +63,34 @@ https://ghfast.top/https://raw.githubusercontent.com/Keywos/rule/main/rename.js
 
 全过程都在浏览器里，直接生成 sing-box 配置了
 
+youtube视频讲解: https://youtu.be/6AdNPM7Gqxo
+
+immortalwrt 下载
+视频演示所用的 immortalwrt qcow2 下载链接（arm64的）： https://downloads.immortalwrt.org/releases/23.05.3/targets/armsr/armv8/immortalwrt-23.05.3-armsr-armv8-generic-ext4-combined-efi.qcow2.gz
+
+https://downloads.immortalwrt.org 你可以根据你的设备选择对应的版本
+
+sing-box 配置文件
+可以在sub-store中生成sing-box配置文件，这里采用的是 tun 模式
+
+sing-box模板文件:
+
+https://raw.githubusercontent.com/xishang0128/sub-store-template/main/sing-box.json
+
+sing-box 脚本链接：
+
+https://raw.githubusercontent.com/xishang0128/sub-store-template/main/sing-box.js#type=2&name=bywave
+
+其中type 2 表示单条订阅 name表示订阅名称 替换为你的sub-store上的订阅信息
+
+注意模板文件与脚本是配套的
+
+修改sing-box json 配置文件
+用sub-store生成好配置文件后
+
+放到 /etc/sing-box/config.json 这里
+
+如果是tun模式，tun的入站加入 "auto_redirect": true
+
+
+
