@@ -1,0 +1,64 @@
+概述
+Sing-box作为一款功能强大的网络工具，其DNS模块的配置对于网络连接性能和安全至关重要。本文将深入剖析DNS模块中domain_resolver与detour参数的工作原理、相互关系以及实际应用中的最佳配置方案。
+
+DNS模块核心参数解析
+domain_resolver参数
+domain_resolver参数用于指定DNS查询请求的解析服务器。当配置了该参数后，所有DNS查询将通过指定的解析器进行处理。这个参数特别适用于以下场景：
+
+需要为特定DNS服务器指定专用的解析器
+避免DNS解析过程中的循环依赖问题
+实现精细化的DNS查询路由控制
+detour参数
+detour参数用于指定DNS查询请求的网络出口路径。值得注意的是，在新版本的Sing-box中，DNS服务器默认使用类似于出站连接的拨号器机制，这相当于默认使用了一个空的直连出站。因此，在某些情况下直接配置detour参数可能会导致"detour to an empty direct outbound makes no sense"的错误提示。
+
+配置实践中的关键问题
+默认解析器的陷阱
+许多用户会尝试配置default_domain_resolver作为全局默认解析器，但这种做法可能导致以下问题：
+
+规则集下载循环：当DNS服务器规则需要从远程下载规则集时，这些下载请求会被default_domain_resolver处理，进而再次触发DNS规则，形成无限循环
+解析路径混乱：全局默认解析器可能干扰特定DNS服务器的专用解析路径
+参数优先级与互斥关系
+在实际配置中需要特别注意：
+
+当同时配置domain_resolver和detour时，detour参数具有更高优先级，会导致domain_resolver配置失效
+所有出站连接(包括直连类型)都需要明确指定domain_resolver，否则可能造成连接失败
+最佳配置方案
+基于实践经验，推荐以下配置策略：
+
+避免使用default_domain_resolver：转而明确为每个DNS服务器配置专用的domain_resolver
+链式解析设计：对于复杂的网络环境，可以采用链式解析设计，确保最终出站连接都有正确的解析器配置
+参数精简原则：在大多数场景下，优先使用domain_resolver而非detour参数
+典型配置示例
+以下是一个经过优化的DNS配置示例：
+
+"servers": [
+    {
+        "tag": "dns-aliyun",
+        "type": "https",
+        "server": "dns.alidns.com",
+        "domain_resolver": "dns-resolver-aliyun"
+    },
+    {
+        "type": "udp",
+        "tag": "dns-resolver-aliyun",
+        "server": "223.5.5.5"
+    },
+    {
+        "type": "https",
+        "tag": "dns-google",
+        "server": "dns.google",
+        "domain_resolver": "dns-resolver-google"
+    },
+    {
+        "type": "udp",
+        "tag": "dns-resolver-google",
+        "server": "8.8.8.8"
+    },
+    {
+        "type": "fakeip",
+        "tag": "fakeip",
+        "inet4_range": "198.18.0.0/15"
+    }
+]
+总结
+Sing-box的DNS模块提供了强大的灵活性和控制能力，但也需要用户深入理解其工作机制才能发挥最佳效果。通过合理配置domain_resolver参数，避免默认解析器的陷阱，并遵循参数优先级原则，可以构建出既稳定又高效的DNS解析体系。记住，在大多数情况下，明确指定解析路径比依赖默认配置更能保证系统的可靠性和可预测性。
