@@ -27,7 +27,6 @@
     ],
     "route": {
         "rules": [
-            {"action":"sniff"},
             {"type":"logical","mode":"or","rules":[{"protocol":"dns"},{"port":53}],"action":"hijack-dns"},
             {"ip_is_private":true,"action":"direct"},
             {"type":"logical","mode":"or","rules":[{"port":853},{"network":"udp","port":443},{"protocol":"stun"}],"action":"reject"},
