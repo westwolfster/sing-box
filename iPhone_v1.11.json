@@ -11,7 +11,6 @@
             {"type":"logical","mode":"and","rules":[{"rule_set":"geosite-geolocation-!cn","invert":true},{"rule_set":"geoip-cn"}],"server":"proxy_dns","client_subnet":"39.142.123.112"},
             {"query_type":["A","AAAA"],"server":"fake_dns","rewrite_ttl":1}
         ],
-	    "strategy": "prefer_ipv4",
         "independent_cache": true,
         "final": "proxy_dns",
         "fakeip": {"enabled":true,"inet4_range":"198.18.0.0/15","inet6_range":"3ffe::/16"}
