@@ -46,14 +46,14 @@
                 "type": "remote",
                 "tag": "geosite-geolocation-cn",
                 "format": "binary",
-                "download_detour": "direct",
+                "download_detour": "Default",
                 "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
             },
             {
                 "type": "remote",
                 "tag": "geoip-cn",
                 "format": "binary",
-                "download_detour": "direct",
+                "download_detour": "Default",
                 "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
             }
         ],
