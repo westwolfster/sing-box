@@ -1,0 +1,64 @@
+{
+    "log": {"level":"error","timestamp":true},
+    "dns": {
+        "servers": [
+          {"tag":"proxy_dns","address":"https://8.8.8.8/dns-query","detour":"Default","address_resolver":"cn_dns"},
+          {"tag":"cn_dns","address":"223.5.5.5","detour":"direct"},
+          {"tag":"fake_dns","address":"fakeip"}
+        ],
+        "rules": [
+            {"domain_suffix":["jsdelivr.net","github.com","githubusercontent.com"],"server":"cn_dns","disable_cache":true},
+            {
+              "type": "logical",
+              "mode": "or",
+              "rules": [{"domain_suffix":[".cn","ileidian.com","ireader.com","zhangyue.com"]},{"domain_keyword":["stun","zhangyue","ireader","turn","wpad"]},{"rule_set":"geosite-cn"}],
+              "server": "cn_dns"
+            },
+            {"rule_set":"geosite-geolocation-cn","server":"cn_dns"},
+            {"query_type":["A","AAAA"],"server":"fake_dns","rewrite_ttl":1}
+        ],
+        "independent_cache": true,
+        "final": "proxy_dns",
+        "fakeip": {"enabled":true,"inet4_range":"198.18.0.0/15","inet6_range":"3ffe::/16"}
+    },
+    "inbounds": [
+        {"type":"tun","tag":"tun-in","interface_name":"tun0","address":["172.19.0.1/30","2001:0470:f9da:fdfa::1/64"],"mtu":1400,"auto_route":true,"strict_route":true,"endpoint_independent_nat":true,"stack":"gvisor","sniff":true,"sniff_override_destination":true},
+        {"type":"mixed","tag":"mixed-in","listen":"127.0.0.1","listen_port":2334,"sniff":true,"sniff_override_destination":true}
+    ],
+    "outbounds": [
+        {"tag":"Default","type":"selector","outbounds":["Auto","direct"]},
+        {"tag":"Auto","type":"urltest","outbounds":[],"url":"https://www.gstatic.com/generate_204","interval":"5m","tolerance":150},
+        {"tag":"direct","type":"direct"}
+    ],
+    "route": {
+        "rules": [
+            {"domain_suffix": ["github.com", "githubusercontent.com", "jsdelivr.net"], "action": "direct"},
+            {"type":"logical","mode":"or","rules":[{"protocol":"dns"},{"port":53}],"action":"hijack-dns"},
+            {"ip_is_private":true,"action":"direct"},
+            {"protocol": "quic","rule_set": ["geosite-geolocation-cn"],"action": "reject"},
+            {"type":"logical","mode":"or","rules":[{"port":853},{"network":"udp","port":443},{"protocol":"stun"}],"action":"reject"},
+            {"rule_set":"geosite-geolocation-cn","action":"direct"},
+            {"rule_set": "geoip-cn","action": "direct"},
+            {"ip_cidr":["198.18.0.0/15","3ffe::/16"],"action":"route","outbound":"Default"}
+        ],
+        "rule_set": [
+            {
+                "type": "remote",
+                "tag": "geosite-geolocation-cn",
+                "format": "binary",
+                "download_detour": "Default",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-cn",
+                "format": "binary",
+                "download_detour": "Default",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "Default"
+    },
+    "experimental": {"cache_file":{"enabled":true,"path":"cache.db","store_fakeip":true}}
+}
