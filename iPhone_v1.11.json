@@ -7,6 +7,7 @@
           {"tag":"fake_dns","address":"fakeip"}
         ],
         "rules": [
+            {"domain_suffix":["jsdelivr.net","github.com","githubusercontent.com"],"server":"cn_dns","disable_cache":true},
             {
               "type": "logical",
               "mode": "or",
@@ -31,6 +32,7 @@
     ],
     "route": {
         "rules": [
+            {"domain_suffix": ["github.com", "githubusercontent.com", "jsdelivr.net"], "action": "direct"},
             {"type":"logical","mode":"or","rules":[{"protocol":"dns"},{"port":53}],"action":"hijack-dns"},
             {"ip_is_private":true,"action":"direct"},
             {"protocol": "quic","rule_set": ["geosite-geolocation-cn"],"action": "reject"},
@@ -45,14 +47,14 @@
                 "tag": "geosite-geolocation-cn",
                 "format": "binary",
                 "download_detour": "direct",
-                "url": "https://ghfast.top/https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
             },
             {
                 "type": "remote",
                 "tag": "geoip-cn",
                 "format": "binary",
                 "download_detour": "direct",
-                "url": "https://ghfast.top/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
             }
         ],
         "auto_detect_interface": true,
