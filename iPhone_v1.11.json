@@ -30,7 +30,7 @@
             {"ip_is_private":true,"action":"direct"},
             {"type":"logical","mode":"or","rules":[{"port":853},{"network":"udp","port":443},{"protocol":"stun"}],"action":"reject"},
             {"rule_set":"geosite-geolocation-cn","action":"direct"},
-            {"type":"logical","mode":"and","rules":[{"rule_set":"geoip-cn"},{"rule_set":"geosite-geolocation-!cn","invert":true}],"action":"direct"},
+            {"type":"logical","mode":"and","rules":[{"rule_set":"geoip-cn"},{"rule_set":"geosite-geolocation-!cn","invert":true}],"action":"Default"},
             {"ip_cidr":["198.18.0.0/15","3ffe::/16"],"action":"route","outbound":"Default"}
         ],
         "rule_set": [
