@@ -11,7 +11,7 @@
             {
               "type": "logical",
               "mode": "or",
-              "rules": [{"domain_suffix":[".cn","ileidian.com","ireader.com","zhangyue.com"]},{"domain_keyword":["stun","zhangyue","ireader","turn","wpad"]},{"rule_set":"geosite-cn"}],
+              "rules": [{"domain_suffix":[".cn","ileidian.com","ireader.com","zhangyue.com"]},{"domain_keyword":["stun","zhangyue","ireader","turn","wpad"]},{"rule_set":"geosite-geolocation-cn"}],
               "server": "cn_dns"
             },
             {"rule_set":"geosite-geolocation-cn","server":"cn_dns"},
