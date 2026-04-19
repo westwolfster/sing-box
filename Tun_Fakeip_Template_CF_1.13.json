@@ -10,7 +10,7 @@
       {"tag":"proxy_dns","type":"https","server":"dns.google","server_port":443,"path":"/dns-query","detour":"Default"},
       {"tag":"proxy_dns2","type":"https","server":"1.1.1.1","server_port":443,"path":"/dns-query","detour":"Default"},
       {"tag":"proxy_dns3","type":"https","server":"8.8.8.8","detour":"Default"},
-      {"tag":"cn_dns", "type": "https", "server": "223.5.5.5", "server_port": 443, "domain_resolver": "dns-resolver", "detour": "Direct-Out"},
+      {"tag":"cn_dns", "type": "https", "server": "223.5.5.5", "server_port": 443, "domain_resolver": "dns-resolver"},
       {"tag":"fake_dns","type":"fakeip","inet4_range":"198.18.0.0/15","inet6_range":"3ffe::/16"}
     ],
     "rules": [
