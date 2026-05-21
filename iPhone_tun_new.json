@@ -63,7 +63,8 @@
       "route_exclude_address_set": ["cn-ip"],
       "auto_route": true,
       "strict_route": true,
-      "sniff": true
+      "sniff": true,
+      "sniff_timeout": "300ms"
     },
     {
       "type": "mixed",
@@ -139,19 +140,21 @@
     "rules": [
       {"ip_cidr":["223.5.5.5/32","119.29.29.29/32","114.114.114.114/32"],"action":"route","outbound":"direct"},
       {"inbound":"tun-in","port":53,"action":"hijack-dns"},
-      {"ip_cidr":["198.18.0.0/15"],"action":"route","outbound":"Proxy"},
       {"action":"sniff"},
       {"ip_is_private":true,"outbound":"direct"},
+      {"rule_set": ["cn-domain"], "action": "route", "outbound": "direct"},
+      {"rule_set": "cn-ip", "action": "route", "outbound": "direct"},
+      {"type":"logical","mode":"and","rules":[{"port":443},{"network":"udp"},{"rule_set":"cnsite"}],"action":"reject"},
+      {"type":"logical","mode":"and","rules":[{"port":443},{"network":"udp"},{"rule_set":"cnip"}],"action":"reject"},
+      {"protocol":"quic","action":"reject"},      
+      {"ip_cidr":["198.18.0.0/15"],"action":"route","outbound":"Proxy"},
       {"rule_set":"gfw","outbound":"Proxy"},
       {"port":53,"action":"route","outbound":"direct"},
-      {"domain_suffix":[".qpon"],"action":"route","outbound":"direct"},      
-      {"protocol":"quic","action":"reject"},      
+      {"domain_suffix":[".qpon"],"action":"route","outbound":"direct"},        
       {"clash_mode": "Direct", "action": "route", "outbound": "direct"},
       {"clash_mode": "Global", "action": "route", "outbound": "Proxy"},
       {"rule_set": ["alibaba", "category-games@cn"], "action": "route", "outbound": "direct"},
       {"type": "logical", "mode": "and", "rules": [{"clash_mode": "AllowAds", "invert": true}, {"rule_set": ["category-ads-all"]}], "action": "reject"},
-      {"rule_set": ["cn-domain"], "action": "route", "outbound": "direct"},
-      {"rule_set": "cn-ip", "action": "route", "outbound": "direct"},
       {"action":"resolve"}
     ],
     "final": "Proxy"
