@@ -145,7 +145,7 @@
       {"rule_set": ["cn-domain"], "action": "route", "outbound": "direct"},
       {"rule_set": "cn-ip", "action": "route", "outbound": "direct"},
       {"type":"logical","mode":"and","rules":[{"port":443},{"network":"udp"},{"rule_set":"cn-domain"}],"action":"reject"},
-      {"type":"logical","mode":"and","rules":[{"port":443},{"network":"udp"},{"rule_set":"cnip"}],"action":"reject"},
+      {"type":"logical","mode":"and","rules":[{"port":443},{"network":"udp"},{"rule_set":"cn-ip"}],"action":"reject"},
       {"protocol":"quic","action":"reject"},      
       {"ip_cidr":["198.18.0.0/15"],"action":"route","outbound":"Proxy"},
       {"rule_set":"gfw","outbound":"Proxy"},
