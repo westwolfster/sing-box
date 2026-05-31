@@ -22,8 +22,8 @@
       {"domain_suffix":["microsoft.com","officecdn.microsoft.com","windows.net","edgesuite.net","office.com"],"server":"cn_dns"},
       {"domain_keyword":["microsoft","office","msft"],"server":"cn_dns"},
       {"domain_suffix":["argotunnel.com","cloudflare.com","cloudflare.net"],"server":"cn_dns"},
+      {"query_type":["AAAA"],"server":"fake_dns","action":"reject"},      
       {"rule_set":"cnsite","server":"cn_dns"},
-      {"query_type":["AAAA"],"server":"fake_dns","action":"reject"},
       {"query_type":["A"],"server":"fake_dns"},
       {"rule_set":"gfw","server":"proxy_dns"}
     ],
