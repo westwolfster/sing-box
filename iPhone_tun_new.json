@@ -27,22 +27,24 @@
     ],
     "rules": [
         {"domain":["_dns.resolver.arpa"],"server":"block"},
+        {"domain_suffix":["weixin.qq.com","qq.com","tencent.com"],"server":"ali"},
+        {"domain_keyword":["weixin","wechat"],"server":"ali"},
         {"domain_suffix":["jsdelivr.net","ghfast.top","githubusercontent.com",".qpon"],"server":"ali"},
         {"domain_suffix":["argotunnel.com","cloudflare.com","cloudflare.net"],"server":"ali"},
         {"clash_mode": "Direct", "server": "ali"},
         {"clash_mode": "Global", "server": "google"},
+        {"query_type": ["AAAA"], "server": "block", "disable_cache": true},
         {"rule_set": ["cn-domain", "alibaba", "category-games@cn"], "server": "ali"},
         {"rule_set": ["category-ads-all"], "server": "block", "disable_cache": true},
-        {"query_type": ["A", "AAAA"], "server": "remote"},
+        {"query_type": ["A"], "server": "remote"},
         {"rule_set":"gfw","server":"google"}
     ],
     "fakeip": {
       "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
+      "inet4_range": "198.18.0.0/15"
     },
     "independent_cache": true,
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "final": "google"
   },
   "inbounds": [
@@ -57,7 +59,7 @@
           "server_port": 7080
         }
       },
-      "stack": "system",
+      "stack": "gvisor",
       "mtu": 1400,
       "route_exclude_address": ["10.0.0.0/8","100.64.0.0/10","169.254.0.0/16","172.16.0.0/12","192.0.0.0/24","192.168.0.0/16"],
       "route_exclude_address_set": ["cn-ip"],
@@ -138,14 +140,16 @@
       }
     ],
     "rules": [
+      "rules": [
       {"ip_cidr":["223.5.5.5/32","119.29.29.29/32","114.114.114.114/32"],"action":"route","outbound":"direct"},
       {"inbound":"tun-in","port":53,"action":"hijack-dns"},
       {"action":"sniff"},
       {"ip_is_private":true,"outbound":"direct"},
+      {"domain_suffix":["weixin.qq.com","qq.com","tencent.com"],"action":"route","outbound":"direct"},
+      {"domain_keyword":["weixin","wechat"],"action":"route","outbound":"direct"},
       {"rule_set": ["cn-domain"], "action": "route", "outbound": "direct"},
       {"rule_set": "cn-ip", "action": "route", "outbound": "direct"},
-      {"type":"logical","mode":"and","rules":[{"port":443},{"network":"udp"},{"rule_set":"cn-domain"}],"action":"reject"},
-      {"type":"logical","mode":"and","rules":[{"port":443},{"network":"udp"},{"rule_set":"cn-ip"}],"action":"reject"},
+      {"type":"logical","mode":"and","rules":[{"port":443},{"network":"udp"}],"action":"reject"},
       {"protocol":"quic","action":"reject"},      
       {"ip_cidr":["198.18.0.0/15"],"action":"route","outbound":"Proxy"},
       {"rule_set":"gfw","outbound":"Proxy"},
