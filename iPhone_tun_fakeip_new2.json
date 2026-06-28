@@ -69,10 +69,11 @@
     },
     {
       "type": "mixed",
-      "tag": "mixed",
-      "listen": "::",
+      "tag": "mixed-in",
+      "listen": "0.0.0.0",
       "listen_port": 7080,
-      "set_system_proxy": false
+      "listen_accept_all": true,
+      "sniff": true
     }
   ],
   "outbounds": [
